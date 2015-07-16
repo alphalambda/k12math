@@ -1,0 +1,15 @@
+#!/bin/sh
+
+cleanall() {
+	rm -f *.o *.hi *.exe
+}
+
+(cd prog/student ; cleanall)
+(cd prog/teacher ; cleanall)
+(cd prog/demo ; cleanall)
+(cd prog/lib/geo ; cleanall)
+(cd prog/lib/geo/Lessons ; cleanall)
+(cd lib ; cleanall)
+(cd lib/Geometry ; cleanall)
+
+exit 0

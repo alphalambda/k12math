@@ -1,0 +1,5 @@
+#!/bin/sh
+cabal update
+rm -rf .cabal-sandbox
+cabal sandbox init
+cabal install gloss

@@ -1,0 +1,15 @@
+#!/bin/sh
+
+PLATFORM=$(ghc --print-host-platform | sed -e 's/unknown-//' | sed -e 's/mingw32/windows/' | sed -e 's/apple-//' | sed -e 's/darwin/osx/')
+VERSION=$(ghc --numeric-version)
+
+GHC="ghc -O2 -threaded -i`pwd`/prog/lib/geo:`pwd`/lib -package-db `pwd`/.cabal-sandbox/${PLATFORM}-ghc-${VERSION}-packages.conf.d"
+
+for f in ${1+"$@"}
+do
+	echo $f
+	g=$(dirname $f)/$(basename $f .hs).exe
+	$GHC -o $g $f
+done
+
+exit 0
